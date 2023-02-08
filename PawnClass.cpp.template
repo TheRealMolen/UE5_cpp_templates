@@ -32,6 +32,9 @@ void %PREFIXED_CLASS_NAME%::Tick(float DeltaTime)
 void %PREFIXED_CLASS_NAME%::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	
+	// assuming this class has a method void MoveForward(float amount):
+    //InputComponent->BindAxis("MoveForward", this, &%PREFIXED_CLASS_NAME%::MoveForward);
 }
 
 //-------------------------------------------------------------------------------------------------------------
