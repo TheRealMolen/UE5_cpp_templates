@@ -1,0 +1,27 @@
+%COPYRIGHT_LINE%
+
+%PCH_INCLUDE_DIRECTIVE%
+%MY_HEADER_INCLUDE_DIRECTIVE%
+%ADDITIONAL_INCLUDE_DIRECTIVES%
+
+%PREFIXED_CLASS_NAME%::%PREFIXED_CLASS_NAME%()
+{
+ 	// TODO: enable this if needed
+	PrimaryComponentTick.bCanEverTick = false;
+}
+
+
+void %PREFIXED_CLASS_NAME%::BeginPlay()
+{
+	Super::BeginPlay();
+
+	%CURSORFOCUSLOCATION%
+}
+
+
+void %PREFIXED_CLASS_NAME%::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+{
+	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+}
+
+%ADDITIONAL_MEMBER_DEFINITIONS%

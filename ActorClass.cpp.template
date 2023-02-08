@@ -1,0 +1,34 @@
+%COPYRIGHT_LINE%
+
+%PCH_INCLUDE_DIRECTIVE%
+%MY_HEADER_INCLUDE_DIRECTIVE%
+%ADDITIONAL_INCLUDE_DIRECTIVES%
+
+//-------------------------------------------------------------------------------------------------------------
+
+%PREFIXED_CLASS_NAME%::%PREFIXED_CLASS_NAME%()
+{
+ 	// TODO: enable this if needed
+	PrimaryActorTick.bCanEverTick = false;
+
+}
+
+//-------------------------------------------------------------------------------------------------------------
+
+void %PREFIXED_CLASS_NAME%::BeginPlay()
+{
+	Super::BeginPlay();
+	%CURSORFOCUSLOCATION%
+}
+
+//-------------------------------------------------------------------------------------------------------------
+
+void %PREFIXED_CLASS_NAME%::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+}
+
+//-------------------------------------------------------------------------------------------------------------
+
+%ADDITIONAL_MEMBER_DEFINITIONS%

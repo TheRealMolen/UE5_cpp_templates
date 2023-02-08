@@ -1,0 +1,65 @@
+%COPYRIGHT_LINE%
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Sound/SoundEffectSubmix.h"
+#include "AudioEffect.h"
+#include "%UNPREFIXED_CLASS_NAME%.generated.h"
+
+//-------------------------------------------------------------------------------------------------------------
+
+USTRUCT(BlueprintType)
+struct %CLASS_MODULE_API_MACRO%F%UNPREFIXED_CLASS_NAME%Settings
+{
+	GENERATED_USTRUCT_BODY()
+	
+	// TIP: this comment shows up as a tooltip
+	UPROPERTY(EditAnywhere, Category = SoundEffect)
+	float MyProperty = 1.f;
+
+	F%UNPREFIXED_CLASS_NAME%Settings()
+	{
+	}
+};
+
+//-------------------------------------------------------------------------------------------------------------
+
+class %CLASS_MODULE_API_MACRO%F%UNPREFIXED_CLASS_NAME% : public FSoundEffectSubmix
+{
+public:
+	F%UNPREFIXED_CLASS_NAME%();
+	~F%UNPREFIXED_CLASS_NAME%();
+
+	// Called on an audio effect at initialization on main thread before audio processing begins.
+	virtual void Init(const FSoundEffectSubmixInitData& InSampleRate) override;
+	
+	// Called when an audio effect preset is changed
+	virtual void OnPresetChanged() override;
+
+	// Process the input block of audio. Called on audio thread.
+	virtual void OnProcessAudio(const FSoundEffectSubmixInputData& InData, FSoundEffectSubmixOutputData& OutData) override;
+
+private:
+	// TODO: any code you need to actually run an instance of the submix effect goes here
+};
+
+//-------------------------------------------------------------------------------------------------------------
+
+UCLASS()
+class %CLASS_MODULE_API_MACRO%%PREFIXED_CLASS_NAME%Preset : public USoundEffectSubmixPreset
+{
+	GENERATED_BODY()
+
+public:
+	EFFECT_PRESET_METHODS(%UNPREFIXED_CLASS_NAME%)
+
+	UFUNCTION(BlueprintCallable, Category = "Audio|Effects")
+	void SetSettings(const F%UNPREFIXED_CLASS_NAME%Settings& InSettings);
+	
+	// %UNPREFIXED_CLASS_NAME% Preset Settings
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = SubmixEffectPreset)
+	F%UNPREFIXED_CLASS_NAME%Settings Settings;
+};
+
+//-------------------------------------------------------------------------------------------------------------

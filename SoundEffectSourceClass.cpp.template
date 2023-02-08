@@ -1,0 +1,45 @@
+%COPYRIGHT_LINE%
+
+%PCH_INCLUDE_DIRECTIVE%
+%MY_HEADER_INCLUDE_DIRECTIVE%
+%ADDITIONAL_INCLUDE_DIRECTIVES%
+
+#include "DSP/Dsp.h"
+
+//-------------------------------------------------------------------------------------------------------------
+
+void F%UNPREFIXED_CLASS_NAME%::Init(const FSoundEffectSourceInitData& InInitData)
+{
+	bIsActive = true;
+	NumChannels = InInitData.NumSourceChannels;
+}
+
+//-------------------------------------------------------------------------------------------------------------
+
+void F%UNPREFIXED_CLASS_NAME%::OnPresetChanged()
+{
+	// get the current settings value of the parent preset asset.
+	GET_EFFECT_SETTINGS(%UNPREFIXED_CLASS_NAME%);
+
+	// TODO: update the instance's variables based on the settings values. 
+	// e.g. VolumeScale = Audio::ConvertToLinear(Settings.VolumeAttenuationDb);
+}
+
+//-------------------------------------------------------------------------------------------------------------
+
+void F%UNPREFIXED_CLASS_NAME%::ProcessAudio(const FSoundEffectSourceInputData& InData, float* OutAudioBufferData)
+{
+	for (int32 Index = 0; Index < InData.NumSamples; ++Index)
+	{
+		OutAudioBufferData[Index] = InData.InputSourceEffectBufferPtr[Index];
+	}
+}
+
+//-------------------------------------------------------------------------------------------------------------
+
+void %PREFIXED_CLASS_NAME%Preset::SetSettings(const F%UNPREFIXED_CLASS_NAME%Settings& InSettings)
+{
+	UpdateSettings(InSettings);
+}
+
+//-------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,63 @@
+%COPYRIGHT_LINE%
+
+#pragma once
+
+#include "CoreMinimal.h"
+%BASE_CLASS_INCLUDE_DIRECTIVE%
+#include "%UNPREFIXED_CLASS_NAME%.generated.h"
+
+//-------------------------------------------------------------------------------------------------------------
+
+USTRUCT(BlueprintType)
+struct %CLASS_MODULE_API_MACRO%F%UNPREFIXED_CLASS_NAME%Settings
+{
+	GENERATED_USTRUCT_BODY()
+
+	// properties ----
+	// e.g.
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SourceEffect|Preset", meta = (ClampMin = "-96.0", UIMin = "-96.0", UIMax = "10.0"))
+	//float VolumeAttenuationDb = 0.f;
+
+	F%UNPREFIXED_CLASS_NAME%Settings()
+	{}
+};
+
+//-------------------------------------------------------------------------------------------------------------
+
+class %CLASS_MODULE_API_MACRO%F%UNPREFIXED_CLASS_NAME% : public FSoundEffectSource
+{
+public:
+	virtual void Init(const FSoundEffectSourceInitData& InInitData) override;
+	virtual void OnPresetChanged() override;
+
+	// Process the input block of audio. Called on audio thread.
+	virtual void ProcessAudio(const FSoundEffectSourceInputData& InData, float* OutAudioBufferData) override;
+
+protected:
+	int32 NumChannels = 2;
+};
+
+//-------------------------------------------------------------------------------------------------------------
+
+UCLASS(ClassGroup = AudioSourceEffect, meta = (BlueprintSpawnableComponent))
+class %CLASS_MODULE_API_MACRO%%PREFIXED_CLASS_NAME%Preset : public USoundEffectSourcePreset
+{
+	GENERATED_BODY()
+
+public:
+	EFFECT_PRESET_METHODS(%UNPREFIXED_CLASS_NAME%)
+
+	// TODO: optional: customize the color of the preset in the editor.
+	// virtual FColor GetPresetColor() const override { return FColor(196.0f, 185.0f, 121.0f); }
+
+	// Change settings of your effect from blueprints. Will broadcast changes to active instances.
+	UFUNCTION(BlueprintCallable, Category = "Audio|Effects")
+	void SetSettings(const F%UNPREFIXED_CLASS_NAME%Settings& InSettings);
+	
+	// The copy of the settings struct. Can't be written to in BP, but can be read.
+	// Note that the value read in BP is the serialized settings, will not reflect dynamic changes made in BP.
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audio|Effects")
+	F%UNPREFIXED_CLASS_NAME%Settings Settings;
+};
+
+//-------------------------------------------------------------------------------------------------------------
