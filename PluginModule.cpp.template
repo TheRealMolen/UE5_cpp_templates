@@ -4,6 +4,8 @@
 #include "Modules/ModuleInterface.h"
 #include "Modules/ModuleManager.h"
 
+//-------------------------------------------------------------------------------------------------------------
+
 class F%MODULE_NAME%Module : public IModuleInterface
 {	
 	virtual void StartupModule() override
@@ -12,4 +14,8 @@ class F%MODULE_NAME%Module : public IModuleInterface
 	}
 };
 
+//-------------------------------------------------------------------------------------------------------------
+
 IMPLEMENT_MODULE( F%MODULE_NAME%Module, %MODULE_NAME% );
+
+//-------------------------------------------------------------------------------------------------------------

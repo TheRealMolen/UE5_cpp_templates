@@ -4,12 +4,13 @@
 
 #include "CoreMinimal.h"
 
-/**
- * %CURSORFOCUSLOCATION%
- */
+//-------------------------------------------------------------------------------------------------------------
+
 class %CLASS_MODULE_API_MACRO%%UNPREFIXED_CLASS_NAME%
 {
 public:
 	%UNPREFIXED_CLASS_NAME%();
 	~%UNPREFIXED_CLASS_NAME%();
 };
+
+//-------------------------------------------------------------------------------------------------------------

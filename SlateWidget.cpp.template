@@ -5,6 +5,8 @@
 %ADDITIONAL_INCLUDE_DIRECTIVES%
 #include "SlateOptMacros.h"
 
+//-------------------------------------------------------------------------------------------------------------
+
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void %PREFIXED_CLASS_NAME%::Construct(const FArguments& InArgs)
 {
@@ -16,3 +18,5 @@ void %PREFIXED_CLASS_NAME%::Construct(const FArguments& InArgs)
 	*/
 }
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION
+
+//-------------------------------------------------------------------------------------------------------------

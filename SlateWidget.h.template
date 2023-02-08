@@ -5,9 +5,8 @@
 #include "CoreMinimal.h"
 %BASE_CLASS_INCLUDE_DIRECTIVE%
 
-/**
- * %CURSORFOCUSLOCATION%
- */
+//-------------------------------------------------------------------------------------------------------------
+
 class %CLASS_MODULE_API_MACRO%%PREFIXED_CLASS_NAME% : public SCompoundWidget
 {
 public:
@@ -15,6 +14,7 @@ public:
 	{}
 	SLATE_END_ARGS()
 
-	/** Constructs this widget with InArgs */
 	void Construct(const FArguments& InArgs);
 };
+
+//-------------------------------------------------------------------------------------------------------------
