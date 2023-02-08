@@ -10,7 +10,6 @@
 {
  	// TODO: enable this if needed
 	PrimaryActorTick.bCanEverTick = false;
-
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -26,7 +25,6 @@ void %PREFIXED_CLASS_NAME%::BeginPlay()
 void %PREFIXED_CLASS_NAME%::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 //-------------------------------------------------------------------------------------------------------------

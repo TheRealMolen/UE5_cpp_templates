@@ -15,6 +15,17 @@ class %CLASS_MODULE_API_MACRO%%PREFIXED_CLASS_NAME% : public %PREFIXED_BASE_CLAS
 	
 public:	
 	%PREFIXED_CLASS_NAME%();
+	
+    // components ----------------
+    //UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+    //UStaticMeshComponent* Mesh;
+
+    // properties ----------------
+    //UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    //float Amount = 100.f;
+
+private:
+    // internal methods ----------
 
 protected:
 	virtual void BeginPlay() override;
